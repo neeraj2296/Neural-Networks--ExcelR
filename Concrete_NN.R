@@ -77,13 +77,15 @@ concrete_model2 <- neuralnet(strength~cement+slag+ash+water+superplastic+
 plot(concrete_model2, rep = "best")
 summary(concrete_model2)
 
-
+#Evaluating the model 
 model_results2<-compute(concrete_model2,concrete_test[1:8])
+
+#Predicting using the bes model
 predicted_strength2<-model_results2$net.result
 cor(predicted_strength2,concrete_test$strength)
 
+#Visualising thee predictions
 plot(predicted_strength,concrete_test$strength)
-
 par(mar = numeric(4), family = 'serif')
 plotnet(concrete_model2, alpha = 0.6)
 # SSE(Error) has reduced and training steps had been increased as the number of neurons # under hidden layer are increased
